@@ -21,6 +21,7 @@ npm install --production \
 ./node_modules/.bin/tsc \
   --lib esnext \
   --strict \
+  --esModuleInterop \
   --noEmitOnError \
   --noImplicitAny \
   --skipLibCheck \
