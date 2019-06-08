@@ -23,7 +23,12 @@ if (process.env[INNER_PRE_HOOK]) {
   process.exit(0)
 }
 
-shell.exec('npm run lint')
+const result = shell.exec('npm run lint')
+if (result.code !== 0) {
+  // linting failed
+  process.exit(1)
+}
+
 shell.rm('-f', 'package-lock.json')
 
 shell.exec('npm version patch --no-package-lock')
