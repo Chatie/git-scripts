@@ -4,7 +4,7 @@
 [![npm (tag)](https://img.shields.io/npm/v/%40chatie/git-scripts/next.svg)](https://www.npmjs.com/package/@chatie/git-scripts?activeTab=versions)
 [![Build Status](https://travis-ci.com/Chatie/git-scripts.svg?branch=master)](https://travis-ci.com/Chatie/git-scripts)
 
-![Linux Kernel Numbering](https://chatie.github.io/git-scripts/images/git-hook.gif)
+![Git Hooks](https://chatie.github.io/git-scripts/images/git-hook.gif)
 > Source: [Git Hooks - Git](https://www.seekpng.com/ipng/u2w7o0i1u2w7o0e6_git-hooks-git/)
 
 Git Hooks Integration for Chatie Projects
