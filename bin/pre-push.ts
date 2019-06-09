@@ -15,27 +15,20 @@ const NO_HOOK_VAR = 'NO_HOOK'
 const INNER_PRE_HOOK = 'CHATIE_INNER_PRE_HOOK'
 
 if (process.env[NO_HOOK_VAR]) {
+  // user set NO_HOOK=1 to prevent this hook works
   process.exit(0)
 }
 
-// http://stackoverflow.com/a/21334985/1123955
 if (process.env[INNER_PRE_HOOK]) {
+  // http://stackoverflow.com/a/21334985/1123955
   process.exit(0)
 }
 
-const result = shell.exec('npm run lint')
-if (result.code !== 0) {
-  // linting failed
-  process.exit(1)
-}
-
+shell.exec('npm run lint').code === 0 || process.exit(1)
 shell.rm('-f', 'package-lock.json')
-
-shell.exec('npm version patch --no-package-lock')
-
+shell.exec('npm version patch --no-package-lock').code === 0 || process.exit(1)
 process.env[INNER_PRE_HOOK] = '1'
-
-shell.exec('git push')
+shell.exec('git push').code === 0 || process.exit(1)
 
 console.info(String.raw`
 ____ _ _        ____            _
