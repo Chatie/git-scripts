@@ -10,3 +10,9 @@ test('NO_HOOK=1', async (t: test.Test) => {
   t.false(result.stdout, 'should no stdout')
   t.false(result.stderr, 'should no stderr')
 })
+
+test('Auto add git pre-push hook to package.json', async t => {
+  const pkg = require('./package.json')
+  const EXPECTED_PRE_PUSH_HOOK = 'npx git-scripts-pre-push'
+  t.equal(pkg.git.scripts['pre-push'], EXPECTED_PRE_PUSH_HOOK, 'should auto added the pre push hook to package.json')
+})
