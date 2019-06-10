@@ -14,6 +14,8 @@ interface PackageGitScripts {
   }
 }
 
+const PRE_PUSH_CMD = 'npx git-scripts-pre-push'
+
 async function main (): Promise<number> {
   const cwd = path.join(
     __dirname,  // bin
@@ -39,7 +41,7 @@ async function main (): Promise<number> {
 
   pkg.git.scripts = {
     ...pkg.git.scripts,
-    'pre-push': 'git-scripts-pre-push',
+    'pre-push': PRE_PUSH_CMD,
   }
 
   const jsonText = JSON.stringify(pkg, null, 2)
