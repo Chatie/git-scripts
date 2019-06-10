@@ -14,7 +14,7 @@
     "lint": "npm run lint:es && npm run lint:ts",
     "lint:es": "eslint bin/**/*.ts src/**/*.ts tests/**/*.ts",
     "lint:ts": "tsc --noEmit",
-    "postinstall": "bash bin/install.sh",
+    "postinstall": "bash scripts/install.sh",
     "test:pack": "bash -x scripts/npm-pack-testing.sh",
     "test:unit": "blue-tape -r ts-node/register \"src/**/*.spec.ts\" \"src/*.spec.ts\" \"tests/*.spec.ts\" \"tests/**/*.spec.ts\"",
     "test": "npm run lint && npm run test:unit"
@@ -49,15 +49,14 @@
   },
   "dependencies": {
     "git-scripts": "^0.2.1",
-    "pkg-jq": "^0.2.2",
     "shelljs": "^0.8.3"
   },
   "devDependencies": {
-    "@chatie/eslint-config": "^0.4.1",
+    "@chatie/eslint-config": "^0.5.2",
     "@chatie/semver": "^0.4.2",
     "@chatie/tsconfig": "^0.6.1",
     "@types/shelljs": "^0.8.5",
-    "read-pkg-up": "^6.0.0",
+    "pkg-up": "^3.1.0",
     "shx": "^0.3.2",
     "tstest": "^0.2.4"
   }
