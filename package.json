@@ -52,7 +52,7 @@
     "shelljs": "^0.8.3"
   },
   "devDependencies": {
-    "@chatie/eslint-config": "^0.5.2",
+    "@chatie/eslint-config": "^0.5.3",
     "@chatie/semver": "^0.4.2",
     "@chatie/tsconfig": "^0.6.1",
     "@types/shelljs": "^0.8.5",
