@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 # "git": {
 #   "scripts": {
@@ -14,4 +15,6 @@
 #   echo "@chatie/git-scripts: done."
 # fi
 
-[ -f dist/bin/install.js ] && node dist/bin/install.js
+if [ -f dist/bin/install.js ]; then
+  node dist/bin/install.js
+fi
