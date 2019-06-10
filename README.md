@@ -19,9 +19,13 @@ Learn more about the original `git-scripts` from its GitHub homepage: [git-scrip
 
 ## CHANGELOG
 
-### v0.1 (master)
+### master
 
-### v0.0.1 June 08, 2019
+### v0.2 (10 Jun 2019)
+
+1. Install hook to `package.json` automatically
+
+### v0.0.1 (08 Jun 2019)
 
 1. Wrap `git-scripts`
 
