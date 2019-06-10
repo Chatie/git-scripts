@@ -25,8 +25,7 @@ async function main (): Promise<number> {
   const pkgFile = await pkgUp({ cwd })
 
   if (!pkgFile) {
-    console.error('@chatie/git-scripts: can not find any package.json')
-    return 1
+    return 0
   }
 
   const pkg = require(pkgFile) as PackageGitScripts
