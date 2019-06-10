@@ -56,6 +56,7 @@
     "@chatie/semver": "^0.4.2",
     "@chatie/tsconfig": "^0.6.1",
     "@types/shelljs": "^0.8.5",
+    "pkg-jq": "^0.2.2",
     "pkg-up": "^3.1.0",
     "shx": "^0.3.2",
     "tstest": "^0.2.4"
