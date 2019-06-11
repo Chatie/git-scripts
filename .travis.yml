@@ -40,7 +40,7 @@ jobs:
       script:
         - echo "NPM Deploying Started ..."
         - npm version
-        - bash -x ./scripts/package-publish-config-tag-latest.sh
+        - bash -x ./scripts/package-publish-config-tag.sh
         - npm run dist
         - echo "NPM Building Finished."
 
