@@ -48,7 +48,7 @@
     }
   },
   "dependencies": {
-    "git-scripts": "^0.2.1",
+    "git-scripts": "git+https://github.com/nkzawa/git-scripts.git",
     "shelljs": "^0.8.3"
   },
   "devDependencies": {
