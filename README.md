@@ -13,9 +13,38 @@ Git Hooks Integration for Chatie Projects
 
 This module is a wrapper of the NPM module [git-scripts](https://www.npmjs.com/package/git-scripts), it provide following additional features:
 
-1. `pre-push` hook had been set to run `npm run lint` and then `npm verion patch` for better code quality and version management.
+1. `pre-push` hook had been set to run `npm run lint` and then `npm verion patch` before `git push` for better code quality and version management.
 
 Learn more about the original `git-scripts` from its GitHub homepage: [git-scripts](https://github.com/nkzawa/git-scripts)
+
+## DISABLE THE HOOK
+
+You can skip git hook for `pre-push` if you want.
+
+### 1. Temporary
+
+To temporary disable the `pre-push` git hook, you can set `NO_HOOK=1` before do `git push`:
+
+```shell
+# for Linux & Mac
+NO_HOOK=1 git push
+
+# for Windows
+
+set NO_HOOK=1 git push
+```
+
+### 2. Permanent
+
+To permanent disable the `pre-push` git hook, you can delete the related settings in `package.json`:
+
+```diff
+-  "git": {
+-    "scripts": {
+-      "pre-push": "npx git-scripts-pre-push"
+-    }
+-  }
+```
 
 ## CHANGELOG
 
