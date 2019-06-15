@@ -49,13 +49,13 @@
   },
   "dependencies": {
     "git-scripts": "git+https://github.com/nkzawa/git-scripts.git",
+    "pkg-up": "^3.1.0",
     "shelljs": "^0.8.3"
   },
   "devDependencies": {
     "@chatie/eslint-config": "^0.5.3",
     "@chatie/tsconfig": "^0.6.1",
     "@types/shelljs": "^0.8.5",
-    "pkg-up": "^3.1.0",
     "shx": "^0.3.2",
     "tstest": "^0.2.4"
   }
