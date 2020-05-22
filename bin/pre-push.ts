@@ -49,8 +49,8 @@ console.info(`
 
 
 
- ### Npm verion bumped and pushed by inner push inside hook pre-push ###"
- ------- vvvvvvv outer push will be canceled, never mind vvvvvvv -------"
+ ### Npm version bumped and pushed by inner push inside hook pre-push ###"
+ -- vvvvvv outer push will be canceled, don't worry, not bug :) vvvvvv --"
 
 
 `)
