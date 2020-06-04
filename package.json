@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@chatie/eslint-config": "^0.5.3",
-    "@chatie/tsconfig": "^0.6.1",
+    "@chatie/tsconfig": "^0.10.1",
     "@types/shelljs": "^0.8.5",
     "shx": "^0.3.2",
     "tstest": "^0.2.4"
