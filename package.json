@@ -57,6 +57,6 @@
     "@chatie/tsconfig": "^0.10.1",
     "@types/shelljs": "^0.8.5",
     "shx": "^0.3.2",
-    "tstest": "^0.2.4"
+    "tstest": "^0.4.10"
   }
 }
