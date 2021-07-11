@@ -13,7 +13,7 @@ Git Hooks Integration for Chatie Projects
 
 This module is a wrapper of the NPM module [git-scripts](https://www.npmjs.com/package/git-scripts), it provide following additional features:
 
-1. `pre-push` hook had been set to run `npm run lint` and then `npm verion patch` before `git push` for better code quality and version management.
+1. `pre-push` hook had been set to run `npm run lint` and then `npm version patch` before `git push` for better code quality and version management.
 
 Learn more about the original `git-scripts` from its GitHub homepage: [git-scripts](https://github.com/nkzawa/git-scripts)
 
