@@ -16,11 +16,11 @@ const INNER_PRE_HOOK = 'CHATIE_INNER_PRE_HOOK'
 
 const argv = process.argv.slice(2)
 const remoteName = argv[0] || ''
-const remoteUrl = argv[1] || ''
+// const remoteUrl = argv[1] || ''
 const localBranch = argv[2] || ''
 const localCommit = argv[3] || ''
 const remoteBranch = argv[4] || ''
-const remoteCommit = argv[5] || ''
+// const remoteCommit = argv[5] || ''
 
 if (localCommit.match(/^0+$/)) {
   // delete remote branch
