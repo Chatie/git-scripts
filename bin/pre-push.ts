@@ -68,7 +68,7 @@ shell.exec('npm version patch --no-package-lock').code === 0 || process.exit(1)
 process.env[INNER_PRE_HOOK] = '1'
 
 const refMaps = refs.map(ref => ref.remoteBranch ? ref.localBranch + ':' + ref.remoteBranch : '')
-const cmd = ['git push', '--dry-run', remoteName, ...refMaps].join(' ')
+const cmd = ['git push', remoteName, ...refMaps].join(' ')
 shell.exec(cmd).code === 0 || process.exit(1)
 
 console.info(String.raw`
