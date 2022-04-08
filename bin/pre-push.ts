@@ -50,7 +50,7 @@ if (process.env[INNER_PRE_HOOK]) {
   process.exit(0)
 }
 
-if (refs?.[0]!.localCommit.match(/^0+$/)) {
+if (refs?.[0]?.localCommit.match(/^0+$/)) {
   // delete remote branch
   process.exit(0)
 }
