@@ -6,9 +6,9 @@
   "exclude": [
     "node_modules/",
     "dist/",
-    "tests/fixtures/",
   ],
   "include": [
+    "tests/fixtures/",
     "app/**/*.ts",
     "bin/*.ts",
     "bot/**/*.ts",
