@@ -10,6 +10,7 @@
  *
  */
 import shell from 'shelljs'
+import path from 'path'
 
 const NO_HOOK_VAR = 'NO_HOOK'
 const INNER_PRE_HOOK = 'CHATIE_INNER_PRE_HOOK'
@@ -55,7 +56,8 @@ if (refs?.[0]?.localCommit.match(/^0+$/)) {
   process.exit(0)
 }
 
-const packageVersion = require('../package.json').version
+const pkgFile = path.join(process.cwd(), 'package.json')
+const packageVersion = require(pkgFile).version
 const lastCommitMsg = shell.exec('git log --pretty=format:"%s" HEAD^0 -1', { silent : true }).stdout
 
 if (packageVersion === lastCommitMsg) {
