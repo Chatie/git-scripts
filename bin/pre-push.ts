@@ -66,7 +66,7 @@ if (packageVersion === lastCommitMsg) {
 
 shell.exec('npm run lint').code === 0 || process.exit(1)
 shell.rm('-f', 'package-lock.json')
-shell.exec('npm version patch --no-package-lock').code === 0 || process.exit(1)
+shell.exec('npm version patch --no-package-lock --no-git-tag-version').code === 0 || process.exit(1)
 process.env[INNER_PRE_HOOK] = '1'
 
 const refMaps = refs.map(ref => ref.remoteBranch ? ref.localBranch + ':' + ref.remoteBranch : '')
