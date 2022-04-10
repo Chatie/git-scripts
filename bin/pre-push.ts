@@ -67,7 +67,7 @@ if (packageVersion === lastCommitMsg) {
 }
 
 console.info('[Step-2]', 'Checking lint...', '\n')
-checkReturn(shell.exec('npm run lint'))
+checkReturn(shell.exec('npm run lint', { silent : true }))
 
 console.info('[Step-3]', 'Bump the package version...', '\n')
 checkReturn(shell.rm('-f', 'package-lock.json'))
