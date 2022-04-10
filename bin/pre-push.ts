@@ -15,6 +15,16 @@ import path from 'path'
 const NO_HOOK_VAR = 'NO_HOOK'
 const INNER_PRE_HOOK = 'CHATIE_INNER_PRE_HOOK'
 
+if (process.env[NO_HOOK_VAR]) {
+  // user set NO_HOOK=1 to prevent this hook works
+  process.exit(0)
+}
+
+if (process.env[INNER_PRE_HOOK]) {
+  // http://stackoverflow.com/a/21334985/1123955
+  process.exit(0)
+}
+
 const argv = process.argv.slice(2)
 const remoteName = argv[0] || ''
 // const remoteUrl = argv[1] || ''
@@ -39,16 +49,6 @@ for (let i = 2; i + 4 <= argv.length;) {
     ref.localBranch = ''
   }
   refs.push(ref)
-}
-
-if (process.env[NO_HOOK_VAR]) {
-  // user set NO_HOOK=1 to prevent this hook works
-  process.exit(0)
-}
-
-if (process.env[INNER_PRE_HOOK]) {
-  // http://stackoverflow.com/a/21334985/1123955
-  process.exit(0)
 }
 
 if (refs?.[0]?.localCommit.match(/^0+$/)) {
