@@ -1,6 +1,6 @@
 {
   "name": "@chatie/git-scripts",
-  "version": "0.7.4",
+  "version": "0.7.6",
   "description": "Git Hooks Integration for Chatie Projects",
   "directories": {
     "doc": "docs",

@@ -9,11 +9,21 @@
  * To enable this hook, rename this file to "pre-commit".
  *
  */
-import shell from 'shelljs'
+import shell, { ShellString } from 'shelljs'
 import path from 'path'
 
 const NO_HOOK_VAR = 'NO_HOOK'
 const INNER_PRE_HOOK = 'CHATIE_INNER_PRE_HOOK'
+
+if (process.env[NO_HOOK_VAR]) {
+  // user set NO_HOOK=1 to prevent this hook works
+  process.exit(0)
+}
+
+if (process.env[INNER_PRE_HOOK]) {
+  // http://stackoverflow.com/a/21334985/1123955
+  process.exit(0)
+}
 
 const argv = process.argv.slice(2)
 const remoteName = argv[0] || ''
@@ -41,40 +51,37 @@ for (let i = 2; i + 4 <= argv.length;) {
   refs.push(ref)
 }
 
-if (process.env[NO_HOOK_VAR]) {
-  // user set NO_HOOK=1 to prevent this hook works
-  process.exit(0)
-}
-
-if (process.env[INNER_PRE_HOOK]) {
-  // http://stackoverflow.com/a/21334985/1123955
-  process.exit(0)
-}
-
 if (refs?.[0]?.localCommit.match(/^0+$/)) {
   // delete remote branch
   process.exit(0)
 }
 
+console.info('[Step-1]', 'Checking last commit...', '\n')
 const pkgFile = path.join(process.cwd(), 'package.json')
 const packageVersion = require(pkgFile).version
-const lastCommitMsg = shell.exec('git log --pretty=format:"%s" HEAD^0 -1', { silent : true }).stdout
+const lastCommitMsg = checkReturn(shell.exec('git log --pretty=format:"%s" HEAD^0 -1', { silent : true })).stdout
 
 if (packageVersion === lastCommitMsg) {
+  console.info('[Step-1]', 'No need to bump the package version.', '\n')
   process.exit(0)
 }
 
-shell.exec('npm run lint').code === 0 || process.exit(1)
-shell.rm('-f', 'package-lock.json')
-shell.exec('npm version patch --no-package-lock').code === 0 || process.exit(1)
+console.info('[Step-2]', 'Checking lint...', '\n')
+checkReturn(shell.exec('npm run lint', { silent : true }))
+
+console.info('[Step-3]', 'Bump the package version...', '\n')
+checkReturn(shell.rm('-f', 'package-lock.json'))
+checkReturn(shell.exec('npm version patch --no-package-lock', { silent : true }))
 process.env[INNER_PRE_HOOK] = '1'
 
-const version = shell.exec('git log --pretty=format:"%s" HEAD^0 -1', { silent : true }).stdout
-shell.exec(`git tag -d v${version}`).code === 0 || process.exit(1)
+console.info('[Step-4]', 'Remove git tag...', '\n')
+const version = checkReturn(shell.exec('git log --pretty=format:"%s" HEAD^0 -1', { silent : true })).stdout
+checkReturn(shell.exec(`git tag -d v${version}`, { silent : true }))
 
+console.info('[Step-5]', 'Push...', '\n')
 const refMaps = refs.map(ref => ref.remoteBranch ? ref.localBranch + ':' + ref.remoteBranch : '')
 const cmd = ['git push', remoteName, ...refMaps].join(' ')
-shell.exec(cmd).code === 0 || process.exit(1)
+checkReturn(shell.exec(cmd, { silent : true }))
 
 console.info(String.raw`
 ____ _ _        ____            _
@@ -101,4 +108,13 @@ console.info(`
 
 `)
 
-process.exit(1)
+process.exit(42)
+
+function checkReturn (ret: ShellString) {
+  if (ret.code !== 0) {
+    const line = '------------------------------------------'
+    console.error(`Error:\n${line}\n\n${ret.stderr}\n\n${line}\n`)
+    process.exit(1)
+  }
+  return ret
+}
