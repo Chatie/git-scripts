@@ -44,7 +44,7 @@
   },
   "git": {
     "scripts": {
-      "pre-push": "ts-node ./bin/pre-push.ts"
+      "pre-push": "npx ts-node ./bin/pre-push.ts"
     }
   },
   "dependencies": {
