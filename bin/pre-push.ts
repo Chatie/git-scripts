@@ -109,7 +109,7 @@ process.exit(42)
 function checkReturn (ret: ShellString) {
   if (ret.code !== 0) {
     const line = '------------------------------------------'
-    console.error(`Error:\n${line}\n\n${ret.stderr}\n\n${line}\n`)
+    console.error(`Error:\n${line}\n\n${ret.stderr || ret.stdout}\n\n${line}\n`)
     process.exit(1)
   }
   return ret
