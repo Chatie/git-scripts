@@ -89,19 +89,23 @@ Update steps:
 
 ### master
 
-### v0.7.8 (12 Apr 2022 )
+### v0.7.11 (29 Sept 2022)
+
+1. fix: 🐛 unknown revision
+
+### v0.7.8 (12 Apr 2022)
 
 1. fix ts-node not found bug
 
-### v0.7.6 (12 Apr 2022 )
+### v0.7.6 (12 Apr 2022)
 
 1. Improve readability of output messages
 
-### v0.7.4 (10 Apr 2022 )
+### v0.7.4 (10 Apr 2022)
 
 1. Remove git tag
 
-### v0.7 (08 Apr 2022 )
+### v0.7 (08 Apr 2022)
 
 1. Fix re-push produces meaningless version when push fails after
 
